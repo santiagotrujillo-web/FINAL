@@ -463,27 +463,21 @@ window.addEventListener('load', function(){
   }
   const logoTex = makeLogoTexture();
 
-  // Textura espejada para ala derecha: flip horizontal del canvas
+  // Textura espejada para ala derecha (OPTIMEN pegado a la derecha)
   function makeLogoTextureR(){
     const c = document.createElement('canvas');
     c.width = 320; c.height = 128;
     const ctx = c.getContext('2d');
-    // Espejamos horizontalmente: translate al borde derecho y scale -1
-    ctx.translate(320, 0);
-    ctx.scale(-1, 1);
     ctx.fillStyle = '#1155cc';
     ctx.fillRect(0,0,320,128);
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 26px Arial Black, Arial';
-    ctx.textAlign = 'left';
+    ctx.textAlign = 'right';
     ctx.textBaseline = 'middle';
-    ctx.fillText('OPTIMEN', 2, 64);
+    ctx.fillText('OPTIMEN', 318, 64);
     return new THREE.CanvasTexture(c);
   }
   const logoTexR = makeLogoTextureR();
-  logoTexR.repeat.set(-1, 1);
-  logoTexR.offset.set(1, 0);
-  logoTexR.wrapS = THREE.RepeatWrapping;
 
   // Avion
   const plane = new THREE.Group();
